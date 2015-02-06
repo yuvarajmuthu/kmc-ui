@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+	<html ng-app="mainApp">
+	<head>
+	  <!-- SCROLLS -->
+	  <!-- load bootstrap and fontawesome via CDN -->
+	  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+	  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+	  <!-- SPELLS -->
+	  <!-- load angular and angular route via CDN -->
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+
+	  <script src="resources/js/lib/angular/angular.js"></script>
+	  <script src="resources/js/base.js"></script>
+	  <script src="resources/js/controllers/LoginController.js"></script>
+	  <script src="resources/js/controllers/RegisterController.js"></script>
+	  
+		<!-- HEADER AND NAVBAR -->
+		
+		<nav class="navbar navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Company Logo Here</a>
+				</div>
+
+				<ul class="nav pull-right">
+					<li><a href="#/login"><i class="fa fa-shield"></i> Login</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-comment"></i> Register</a>
+						<div class="dropdown-menu" style="padding:17px;">
+			              <form class="form" id="formLogin"> 
+			                <input name="username" id="username" type="text" placeholder="Username"> 
+			                <input name="password" id="password" type="password" placeholder="Password"><br>
+			                <button type="button" id="btnLogin" class="btn">Login</button>
+			              </form>
+			            </div>
+
+					</li>
+				</ul>
+			
+			</div>
+		</nav>
+		
+		<div id="main" ng-controller="mainController" >	
+			<p>{{ message }}</p>
+		
+
+			<div ng-view>
+		</div>
+	</div>
+<!-- <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+
+      <div class="nav-collapse collapse">
+  
+        <ul class="nav pull-right">
+          <li class="dropdown" id="menuLogin">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
+            <div class="dropdown-menu" style="padding:17px;">
+              <form class="form" id="formLogin"> 
+                <input name="username" id="username" type="text" placeholder="Username"> 
+                <input name="password" id="password" type="password" placeholder="Password"><br>
+                <button type="button" id="btnLogin" class="btn">Login</button>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>/.nav-collapse
+    </div>/.container
+  </div>/.navbar-inner
+</div>/.navbar -->
+<!-- <header>
+<div class="navbar navbar-fixed-top">
+  
+    <div class="container">
+      <ul class="nav pull-right">
+<div class="dropdown">
+         <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
+            <div class="dropdown-menu" style="padding:17px;">
+              <form class="form" id="formLogin"> 
+                <input name="username" id="username" type="text" placeholder="Username"> 
+                <input name="password" id="password" type="password" placeholder="Password"><br>
+                <button type="button" id="btnLogin" class="btn">Login</button>
+              </form>
+            </div>
+      </div>	
+      </ul>
+      </div>
+      </div>
+      	</header> -->
+		<!-- from learnSocial.com -->
+		<!-- <div id="loginModal" class="login-box-modal" style="display: block;">
+                        <a href="#" class="cls-sm">x</a>
+                        <div id="loginFormdiv" style="display: none;">                                
+                            <form id="loginForm" name="loginForm" action="/loginUser" method="post" autocomplete="off" style="display: none;">
+                                <h3>Login Here</h3>
+                                <div class="newmsgtxt" id="rerrormsgdiv" style="display:none;">Choose your password</div>
+                                <input type="text" placeholder="Enter E-mail ID" autocomplete="off" name="email" id="lemail" value="">
+                                <input type="password" placeholder="Enter your password" autocomplete="off" name="key" id="lkey" value="">
+                                <label class="lforget"><span class="chk-login" style="color: #222;"><input type="checkbox" name="keeplogin" value="true" id="keeplogin"> Keep me logged in</span></label>
+                                <button class="form-btn signin-bt">Login</button>
+
+                                <p class="lforget"><a href="javascript:void(0);" class="for-link">Forgot Password?</a><span class="lnewuser">New User, <a href="javascript:void(0);" class="signup-link">SignUp Now</a></span></p>
+                            </form>
+                        </div>
+
+                        <div id="resetFormdiv" style="display: none;">
+                            <form id="resetForm" name="resetForm" style="display: none;" method="post" autocomplete="off">
+                                <h3>Forgot Password?</h3>
+                                <p id="forgetid_f" class="newmsgtxt" style="display: none;">Enter Email ID</p>
+                                <p>Enter the email address associated with your account, and we'll email you a link to reset your password.</p>
+                                <input type="text" placeholder="Enter E-mail ID" id="femail" autocomplete="off" value="" name="femail">
+
+                                <button class="form-btn signin-bt resend-bt" id="newsubmit">Send Reset Link</button>
+                                <p class="lforget"><a href="javascript:void(0);" class="for-link logBack">Login</a><span class="lnewuser">New User, <a href="javascript:void(0);" class="signup-link">SignUp Now</a></span></p>
+                            </form>
+                        </div>
+                                
+                                
+
+
+                        <div id="regFormdiv" style="display: block;">
+                            <form id="regForm" name="regForm" action="/registeruser" method="post" autocomplete="off">
+                                <h3>Get Started @ LearnSocial</h3>
+                                <div class="newmsgtxt" id="rerrormsgdiv1" style="display:none;">Choose your password</div>
+                                <input type="text" placeholder="Full Name" autocomplete="off" id="fullname" name="fullname" class="textfield">
+                                <input type="text" placeholder="Mobile" autocomplete="off" id="mobile" name="mobile" class="textfield">
+                                <input type="text" placeholder="Enter E-mail ID" autocomplete="off" name="email" id="email" value="">
+                                <input type="password" placeholder="Choose Password" name="password" id="password" value="">
+                                <button class="form-btn signin-bt resend-bt">Register Now</button>
+                                <p class="lforget"><span class="lnewuser">Already a member at LearnSocial, <a href="javascript:void(0);" class="new-link log-back">Login Here</a></span></p>
+                            </form>
+                        </div>
+                                
+                        <div id="detailsFormdiv" style="display: none;">
+                            <form action="/directRegForgot" id="userDetails" name="detailsForm" method="post" autocomplete="off">
+                                <h3>Complete Your Registration</h3>
+                                <p id="forgetid" class="newmsgtxt" style="display: none;">Enter Email ID</p>
+                                <p>Enter Your name and choose a password to manage your account</p>
+                                <input type="hidden" name="femail" id="femail_New" value="">
+                                <input type="text" placeholder="Full Name" autocomplete="off" id="fullname1" name="fullname" class="textfield">
+                                <input type="password" placeholder="Choose Password" name="password" id="password1" value="">
+                                <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confpassword3" value="">
+                                <button class="form-btn signin-bt resend-bt" id="newsubmit_f">Submit</button>
+                                <p class="lforget"><a href="javascript:void(0);" class="for-link logBack">Login</a><span class="lnewuser">New User, <a href="javascript:void(0);" class="signup-link">SignUp Now</a></span></p>
+                            </form>
+                        </div>
+
+                    </div> -->
+                    
+        <!--             <footer>
+					  <p>Designed by: KMC</p>
+					  <p>Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p>
+					</footer> -->
+		
+	</body>
+	</html>
